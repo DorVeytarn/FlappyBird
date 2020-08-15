@@ -41,8 +41,7 @@ public class BirdMover : MonoBehaviour
     {
         transform.position = _startPosition;
         transform.rotation = Quaternion.Euler(Vector3.zero);
-        _rigidbody2D.velocity = Vector2.zero;
-
+        _rigidbody2D.velocity = Vector3.zero;
     }
 
 }

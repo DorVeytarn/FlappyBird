@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BirdMover))]
 public class Bird : MonoBehaviour
 {
     private BirdMover _mover;
     private int _score;
+
+    public event UnityAction BirdDied;
+    public event UnityAction<int> ScoreChanged;
 
     private void Start()
     {
@@ -22,10 +26,11 @@ public class Bird : MonoBehaviour
     public void IncreaseScore()
     {
         _score++;
+        ScoreChanged?.Invoke(_score);
     }
 
     public void Die()
     {
-        print("Die!!!");
+        BirdDied?.Invoke();
     }
 }
